@@ -1,0 +1,4 @@
+
+Vsquid:S1118":Add a private constructor to hide the implicit public one.(¤ì ¦8ìÈèÉé,
+ksquid:S2674"JCheck the return value of the "read" call to see how many bytes were read.(òÒ»§ùÿÿÿÿ8ìÈèÉé,
+?squid:S1148"#Use a logger to log this exception.(Ç’Çê8ìÈèÉé,

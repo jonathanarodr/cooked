@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context=".ui.DetailFragment">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp">
+
+        <TextView
+            android:id="@+id/tv_recipe_title"
+            style="@style/AppTheme.Subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label_recipe"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_recipe_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            app:layout_constraintStart_toStartOf="@+id/tv_recipe_title"
+            app:layout_constraintTop_toBottomOf="@id/tv_recipe_title"
+            tools:text="Recipe Name" />
+
+        <TextView
+            android:id="@+id/tv_servings_title"
+            style="@style/AppTheme.Subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/label_servings"
+            app:layout_constraintStart_toStartOf="@+id/tv_recipe_name"
+            app:layout_constraintTop_toBottomOf="@+id/tv_recipe_name" />
+
+        <TextView
+            android:id="@+id/tv_servings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            app:layout_constraintStart_toStartOf="@+id/tv_servings_title"
+            app:layout_constraintTop_toBottomOf="@id/tv_servings_title"
+            tools:text="0" />
+
+        <TextView
+            android:id="@+id/tv_ingredients_title"
+            style="@style/AppTheme.Subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/label_ingredients"
+            app:layout_constraintStart_toStartOf="@+id/tv_servings"
+            app:layout_constraintTop_toBottomOf="@+id/tv_servings" />
+
+        <TextView
+            android:id="@+id/tv_ingredients"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            app:layout_constraintStart_toStartOf="@+id/tv_ingredients_title"
+            app:layout_constraintTop_toBottomOf="@+id/tv_ingredients_title"
+            tools:text="Lorem inpuns londain mon" />
+
+        <TextView
+            android:id="@+id/tv_steps_title"
+            style="@style/AppTheme.Subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/label_steps"
+            app:layout_constraintStart_toStartOf="@+id/tv_ingredients"
+            app:layout_constraintTop_toBottomOf="@+id/tv_ingredients" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_steps"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/tv_steps_title"
+            app:layout_constraintTop_toBottomOf="@+id/tv_steps_title"
+            tools:itemCount="5"
+            tools:listitem="@layout/item_step" />
+
+    </android.support.constraint.ConstraintLayout>
+
+</android.support.v4.widget.NestedScrollView>
