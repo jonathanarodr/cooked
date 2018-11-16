@@ -59,3 +59,16 @@ h
 8app/src/main/java/br/com/jar/cooked/ui/MainFragment.java,4/6/46710c4c28bf760e4f04f6e8563bdf7fdee991c2
 v
 Fapp/src/androidTest/java/br/com/jar/cooked/CookedInstrumentedTest.java,6/f/6f3f7e54ad383e4b1821c5a98e11de80f82336ba
+h
+8app/src/main/java/br/com/jar/cooked/ui/StepActivity.java,4/e/4ec2793f840795b1441f1fb59b89e6128fd354c0
+s
+Capp/src/main/java/br/com/jar/cooked/widget/RecipeRemoteService.java,9/e/9ea1b029afd30df3cd029e71a4f504d3808ff793
+:
+
+.gitignore,a/5/a5cc2925ca8258af241be7e5b0381edf30266302
+i
+9app/src/main/java/br/com/jar/cooked/data/AppDatabase.java,8/5/85191ebd6ae6c503bf2721f02e9263fb34e7c12d
+g
+7app/src/main/java/br/com/jar/cooked/data/RecipeDao.java,7/c/7c1045772c5a47faf207ee8d39178e9483f11aeb
+g
+7app/src/main/java/br/com/jar/cooked/ui/StepAdapter.java,e/d/ed2fed2ba9e0abc556b14ee201b580d00a28082c

@@ -1,11 +1,12 @@
 package br.com.jar.cooked.widget;
 
+import android.annotation.TargetApi;
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
 import android.content.Intent;
-import android.widget.LinearLayout;
+import android.os.Build;
 import android.widget.RemoteViews;
 
 import br.com.jar.cooked.R;
@@ -13,20 +14,28 @@ import br.com.jar.cooked.ui.MainActivity;
 
 public class RecipeWidget extends AppWidgetProvider {
 
-    static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
-                                int appWidgetId) {
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+    static void updateAppWidget(Context context, AppWidgetManager appWidgetManager, int appWidgetId) {
+        RemoteViews views  = new RemoteViews(context.getPackageName(), R.layout.recipe_widget);
+        buildIntentService(context, views);
+        buildPendingIntent(context, views);
+        buildEmptyState(views);
 
-        Intent intentService = new Intent(context, RecipeService.class);
+        appWidgetManager.updateAppWidget(appWidgetId, views);
+    }
 
-        RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.recipe_widget);
-        views.setRemoteAdapter(R.id.lv_recipes_widget, intentService);
+    private static void buildIntentService(Context context, RemoteViews views) {
+        views.setRemoteAdapter(R.id.lv_recipes_widget, new Intent(context, RecipeRemoteService.class));
+    }
 
+    private static void buildPendingIntent(Context context, RemoteViews views) {
         Intent intent = new Intent(context, MainActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         views.setPendingIntentTemplate(R.id.lv_recipes_widget, pendingIntent);
+    }
 
-        // Instruct the widget manager to update the widget
-        appWidgetManager.updateAppWidget(appWidgetId, views);
+    private static void buildEmptyState(RemoteViews views) {
+        views.setEmptyView(R.id.lv_recipes_widget, R.id.rl_empty_state_widget);
     }
 
     @Override

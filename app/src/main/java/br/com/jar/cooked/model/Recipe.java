@@ -1,14 +1,23 @@
 package br.com.jar.cooked.model;
 
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
+import android.arch.persistence.room.PrimaryKey;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.provider.BaseColumns;
 
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity(tableName = Recipe.TABLE_NAME)
 public class Recipe implements Parcelable {
+
+    public static final String TABLE_NAME = "recipes";
+    public static final String COLUMN_ID = BaseColumns._ID;
 
     public static final Creator<Recipe> CREATOR = new Creator<Recipe>() {
         @Override
@@ -22,21 +31,32 @@ public class Recipe implements Parcelable {
         }
     };
 
+    @PrimaryKey
+    @ColumnInfo(index = true, name = Recipe.COLUMN_ID)
     @SerializedName("id")
-    private int id;
+    private long id;
+    @Ignore
     @SerializedName("name")
     private String name;
+    @Ignore
     @SerializedName("servings")
     private int servings;
+    @Ignore
     @SerializedName("image")
     private String image;
+    @Ignore
     @SerializedName("ingredients")
     private List<Ingredient> ingredients;
+    @Ignore
     @SerializedName("steps")
     private List<Step> steps;
 
+    public Recipe(long id) {
+        this.id = id;
+    }
+
     protected Recipe(Parcel in) {
-        id = in.readInt();
+        id = in.readLong();
         name = in.readString();
         servings = in.readInt();
         image = in.readString();
@@ -53,7 +73,7 @@ public class Recipe implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(id);
+        dest.writeLong(id);
         dest.writeString(name);
         dest.writeInt(servings);
         dest.writeString(image);
@@ -61,7 +81,7 @@ public class Recipe implements Parcelable {
         dest.writeList(steps);
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 

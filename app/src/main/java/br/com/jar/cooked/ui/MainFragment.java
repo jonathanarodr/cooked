@@ -20,6 +20,7 @@ import java.util.List;
 import br.com.jar.cooked.R;
 import br.com.jar.cooked.model.Recipe;
 import br.com.jar.cooked.util.JsonUtils;
+import br.com.jar.cooked.widget.RecipeService;
 
 public class MainFragment extends Fragment implements RecipeAdapterOnClickHandler {
 
@@ -77,6 +78,8 @@ public class MainFragment extends Fragment implements RecipeAdapterOnClickHandle
 
     @Override
     public void onClick(Recipe recipe) {
+        updateRecipeService(recipe);
+
         Bundle bundle = new Bundle();
         bundle.putParcelable(Intent.EXTRA_INTENT, recipe);
 
@@ -90,6 +93,10 @@ public class MainFragment extends Fragment implements RecipeAdapterOnClickHandle
                 .commit();
 
         ((MainActivity) getActivity()).addBackStackListener();
+    }
+
+    private void updateRecipeService(Recipe recipe) {
+        RecipeService.startActionSelectRecipe(getContext(), recipe);
     }
 
 }
